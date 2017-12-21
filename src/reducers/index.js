@@ -5,18 +5,18 @@ import { routerReducer } from "react-router-redux";
 
 import { sampleReducer } from "./sampleReducer.jsx";
 // import { createAccReducer } from "./createAccReducer";
-// import { checkSessionReducer } from "./checkSessionReducer";
-// import { loginReducer } from "./loginReducer";
-// import { tmdbReducer } from "./tmdbReducer";
+import { firebaseDBReducer } from "./firebaseDBReducer.jsx";
+import { checkSessionReducer } from "./checkSessionReducer.jsx";
+import { loginReducer } from "./loginReducer.jsx";
+
 
 
 
 const rootReducer = combineReducers({
 	sampleReducer,
-	// createAccReducer,
-	// checkSessionReducer,
-	// loginReducer,
-	// tmdbReducer,
+	loginReducer,
+	checkSessionReducer,
+	firebaseDBReducer,
 	routing: routerReducer
 });
 export default rootReducer;
