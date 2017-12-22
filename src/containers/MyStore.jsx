@@ -13,7 +13,8 @@ class MyStore extends Component {
 	}
 
 	componentDidMount() {
-		// console.log();
+
+
 	}
 
 	_handleInput(event) {
@@ -25,10 +26,11 @@ class MyStore extends Component {
 		 let metadata = {
 			 contentType: 'image/jpeg'
 		 };
+		 let user = fire.auth().currentUser;
 		 console.log(storageRef);
 		 let uploadTask = storageRef.child(`images/${fire.auth().currentUser.uid}/${fileName}`).put(file, metadata);
 		 console.log('Uploading to server...');
-		 this.props.firebaseUploadImg(file, metadata, fileName, uploadTask);
+		 this.props.firebaseUploadImg(file, metadata, user, fileName, uploadTask);
 	}
 	render() {
 
@@ -47,6 +49,7 @@ class MyStore extends Component {
 					 <input id="inputImg1" type="file" accept="image/*" onChange={this._handleInput}/>
 					 <div className="mainImg">
 						 <img id="main_IMG1" src="" alt="" width='250' height='250' className='img-responsive img_main img-rounded' />
+
 						 <span>Image Holder</span>
 					 </div>
 

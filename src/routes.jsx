@@ -14,6 +14,7 @@ import Profile from './containers/Profile.jsx';
 import fire from './firebase.js';
 import { checkSession } from './actions/userActions';
 import { fbUpdate } from './actions/userActions';
+import { marketplaceUpdate } from './actions/userActions';
 
 
 fire.auth().onAuthStateChanged(firebaseUser => {
@@ -30,6 +31,15 @@ fire.database().ref(`users/`).on('value', function(snapshot) {
 	store.dispatch(fbUpdate(snap));
 });
 
+
+fire.database().ref('items/').orderByKey().on('value', function(snapshot) {
+	console.log('items list returned from routes.jsx');
+	var itemsArray = Object.values(snapshot.val())
+
+	store.dispatch(marketplaceUpdate(itemsArray))
+
+
+});
 
 
 const theRoutes = (

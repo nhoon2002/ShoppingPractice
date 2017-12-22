@@ -9,6 +9,7 @@ import { firebaseDBReducer } from "./firebaseDBReducer.jsx";
 import { checkSessionReducer } from "./checkSessionReducer.jsx";
 import { loginReducer } from "./loginReducer.jsx";
 import { storageUploadReducer } from "./storageUploadReducer.jsx";
+import { databaseUpdateReducer } from "./databaseUpdateReducer.jsx";
 
 
 
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
 	checkSessionReducer,
 	firebaseDBReducer,
 	storageUploadReducer,
+	databaseUpdateReducer,
 	routing: routerReducer
 });
 export default rootReducer;

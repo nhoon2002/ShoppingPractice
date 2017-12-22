@@ -6,6 +6,13 @@ import promise from 'es6-promise'
 promise.polyfill();
 
 // const apiKey = require('../../controller/config.js').api
+export function marketplaceUpdate(snapshot) {
+
+	return function(dispatch) {
+		dispatch({type: 'MARKETPLACE_UPDATED', payload: snapshot})
+	}
+
+}
 
 export function sampleAction() {
 	return function(dispatch) {
@@ -51,22 +58,30 @@ export function checkSession() {
  		  dispatch({ type: 'FACEBOOK_CREATE_ACCOUNT_SUCESSS', payload: user});
  			//INITIALIZE FIREBASE USER DATABASE
  			const dbRef = firebase.database().ref(`users/${user.uid}/`);
+			console.log('WOOOOOOO');
+			dbRef.once('value').then(function(snapshot) {
+				console.log(snapshot.val());
+				if(!snapshot.val()) {
+					console.log('User database info does not exist yet. Setting the initial object...');
+					dbRef.set({
+						username: user.displayName,
+						email: user.email,
+						profilePic : user.photoURL,
+						items: ''
+					})
+					.then(
+						function(success) {
+							console.log('DBREFSET SUCCESS');
+						}
+					)
+					.catch(
+						function(error) {
+							console.log('Encounted error: dbRef');
+						}
+					)
+				}
+			});
 
- 			  dbRef.set({
- 			    username: user.displayName,
- 			    email: user.email,
- 			    profilePic : user.photoURL
- 			  })
- 			  .then(
- 				  function(success) {
- 					console.log('DBREFSET SUCCESS');
- 			  	  }
- 		  	  )
- 			  .catch(
- 				  function(error) {
- 					 console.log('Encounted error: dbRef');
- 				  }
- 			  )
 
  		  dispatch({ type: 'SESSION_EXISTS', payload: user});
  		  browserHistory.push('/');
@@ -95,7 +110,7 @@ export function checkSession() {
  		}
 
   }
- export function firebaseUploadImg(file, metadata, fileName, uploadTask) {
+ export function firebaseUploadImg(file, metadata, user, fileName, uploadTask) {
 	 return function(dispatch) {
 
 
@@ -136,14 +151,29 @@ export function checkSession() {
 						      break;
 						  }
 						}, function() {
-						  // Upload completed successfully, now we can get the download URL
+						  // Upload completed successfully, now we can get the download URL and prepare to populate the realtime database.
+						  var database = firebase.database();
 						  var downloadSnap = uploadTask.snapshot;
 						  var downloadURL = uploadTask.snapshot.downloadURL;
+						  var itemInfo = {
+							  name: fileName,
+							  user: user.displayName,
+							  photoURL: downloadURL
+						  };
+						  var itemsRef = database.ref(`items/${Date.now()}`).set(itemInfo);
+						  database.ref(`users/${user.uid}/items`).push(itemInfo);
 							dispatch({type: 'STORAGE_UPLOAD_SUCCESS', payload: downloadURL})
+
+
 
 						});
 						};
 				}
+
+
+
+
+
 
 
 	//RETRIEVING IMAGE FROM STORAGE BUCKET
