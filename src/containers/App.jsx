@@ -14,7 +14,8 @@ function mapStateToProps (state) {
 		// createAccount: state.createAccReducer.creatingAccount,
 		loginStatus: state.checkSessionReducer.loggedin,
 		currentUser: state.checkSessionReducer.currentUser,
-		firebaseDB: state.firebaseDBReducer.snapshot
+		firebaseDB: state.firebaseDBReducer.snapshot,
+		storageUpload: state.storageUploadReducer.fileURL
 		// loginAccount: state.loginReducer.signinginAccount,
 		// queryData: state.tmdbReducer.dataReturned
 

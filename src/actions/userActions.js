@@ -95,3 +95,81 @@ export function checkSession() {
  		}
 
   }
+ export function firebaseUploadImg(file, metadata, fileName, uploadTask) {
+	 return function(dispatch) {
+
+
+		 // Upload file and metadata to the object
+
+			uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+			  function(snapshot) {
+			    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+			    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+			    console.log('Upload is ' + progress + '% done');
+			    switch (snapshot.state) {
+			      case firebase.storage.TaskState.PAUSED: // or 'paused'
+			        console.log('Upload is paused');
+			        break;
+			      case firebase.storage.TaskState.RUNNING: // or 'running'
+			        console.log('Upload is running');
+			        break;
+			    }
+			  }, function(error) {
+
+							dispatch({type: 'STORAGE_UPLOAD_ERROR', payload: error.code});
+
+						  // A full list of error codes is available at
+						  // https://firebase.google.com/docs/storage/web/handle-errors
+						  switch (error.code) {
+						    case 'storage/unauthorized':
+						      // User doesn't have permission to access the object
+						      break;
+
+						    case 'storage/canceled':
+						      // User canceled the upload
+						      break;
+
+
+
+						    case 'storage/unknown':
+						      // Unknown error occurred, inspect error.serverResponse
+						      break;
+						  }
+						}, function() {
+						  // Upload completed successfully, now we can get the download URL
+						  var downloadSnap = uploadTask.snapshot;
+						  var downloadURL = uploadTask.snapshot.downloadURL;
+							dispatch({type: 'STORAGE_UPLOAD_SUCCESS', payload: downloadURL})
+
+						});
+						};
+				}
+
+
+	//RETRIEVING IMAGE FROM STORAGE BUCKET
+
+	// var file;
+	// // Create a root reference
+	// var storageRef = firebase.storage().ref();
+	// // updateImg1();
+	// // updateImg2();
+	// function updateImg1() {
+	//   storageRef.child('images/items/main1.JPG').getDownloadURL().then(function(url) {
+	//   // `url` is the download URL for 'images/stars.jpg'
+  //
+	//   // This can be downloaded directly:
+	//   var xhr = new XMLHttpRequest();
+	//   xhr.responseType = 'blob';
+	//   xhr.onload = function(event) {
+	//     var blob = xhr.response;
+	//   };
+	//   xhr.open('GET', url);
+	//   xhr.send();
+  //
+	//   // Or inserted into an <img> element:
+	//   var img = document.getElementById("main_IMG1");
+	//   img.src = url;
+	// }).catch(function(error) {
+	//   console.log(error);
+	// });
+	// }
