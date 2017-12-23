@@ -7,31 +7,38 @@ class Marketplace extends Component {
 	constructor(props) {
 		super(props)
 
-		this.state = {propsLoaded: false, items: [{name: 'Add an item.', photoURL: 'https://placehold.it/100x100'}]};
+		this.state = {
+			items: []
+		};
 
 	}
 
 	componentDidMount() {
+		fire.database().ref('items/').orderByKey().on('value', snapshot => {
+			console.log('items list returned from Marketplace.jsx');
+			this.props.marketplaceUpdate(snapshot);
+			console.log(this.props);
 
-		// var itemsArray = fire.database().ref('items/').orderByKey().once('value', snapshot => {
-		// 	const itemsArray = Object.values(snapshot.val());
-		// 	this.setState({items: itemsArray});
-		// })
-		console.log(this.state.items);
+			var itemsArray = Object.values(snapshot.val())
+			var newArray = [{name: 'Add an item.', photoURL: 'https://placehold.it/100x100'}, ...itemsArray];
+			console.log(newArray);
+			this.setState({
+				items: newArray
+			});
+			console.log('From INNER CDM...', this.state.items);
+
+		});
 
 
 
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log('the database update:',nextProps.databaseUpdate);
-		if(nextProps.databaseUpdate.length > 1) {
-			this.setState({propsLoaded: true, items: nextProps.databaseUpdate});
-		}
-		// console.log(this.state);
-		// this.setState({ items: this.props.databaseUpdate})
-		// console.log(this.state);
-		// console.log('props Received...');
-	}
+	// componentWillReceiveProps(nextProps) {
+	// 	if(nextProps.databaseUpdate.length > 1) {
+	// 		console.log('the database update:',nextProps.databaseUpdate);
+	// 		this.setState({propsLoaded: true, items: nextProps.databaseUpdate});
+	// 	}
+   //
+	// }
 
 
 	render() {

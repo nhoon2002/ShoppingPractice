@@ -21,7 +21,7 @@ class NavBootstrap extends Component {
 
 
                      <img className='img-circle navbarAvatar' src={this.props.firebaseDB[0].profilePic} alt='profile'/>
-               
+
 
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -42,7 +42,7 @@ class NavBootstrap extends Component {
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href="#">Link Right</NavItem>
-              <NavItem eventKey={2} href="#">Link Right</NavItem>
+              <NavItem eventKey={2} onClick={this.props.signOut}>Logout</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

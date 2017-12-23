@@ -1,9 +1,9 @@
 // loginReducer
 
 
-export function databaseUpdateReducer (
+export function marketplaceUpdateReducer (
    state = {
-     itemsArray: ''
+     itemsArray: []
 
 
 	},
@@ -15,7 +15,7 @@ export function databaseUpdateReducer (
       case "MARKETPLACE_UPDATED": {
          return {
             ...state,
-            itemsArray: action.payload
+            itemsArray: Object.values(action.payload)
          }
       }
 

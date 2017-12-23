@@ -9,7 +9,8 @@ promise.polyfill();
 export function marketplaceUpdate(snapshot) {
 
 	return function(dispatch) {
-		dispatch({type: 'MARKETPLACE_UPDATED', payload: snapshot})
+
+		dispatch({type: 'MARKETPLACE_UPDATED', payload: snapshot.val()})
 	}
 
 }

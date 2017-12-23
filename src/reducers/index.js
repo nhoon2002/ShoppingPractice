@@ -9,7 +9,7 @@ import { firebaseDBReducer } from "./firebaseDBReducer.jsx";
 import { checkSessionReducer } from "./checkSessionReducer.jsx";
 import { loginReducer } from "./loginReducer.jsx";
 import { storageUploadReducer } from "./storageUploadReducer.jsx";
-import { databaseUpdateReducer } from "./databaseUpdateReducer.jsx";
+import { marketplaceUpdateReducer } from "./marketplaceUpdateReducer.jsx";
 
 
 
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 	checkSessionReducer,
 	firebaseDBReducer,
 	storageUploadReducer,
-	databaseUpdateReducer,
+	marketplaceUpdateReducer,
 	routing: routerReducer
 });
 export default rootReducer;

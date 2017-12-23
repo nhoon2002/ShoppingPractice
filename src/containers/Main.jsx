@@ -14,7 +14,7 @@ class Main extends Component {
 
      const showNav = (
         <div>
-           <NavBootstrap firebaseDB={this.props.firebaseDB}/>
+           <NavBootstrap firebaseDB={this.props.firebaseDB} signOut = {this.props.signOut}/>
            <div className='container'>
             {React.cloneElement(this.props.children, this.props)}
            </div>
