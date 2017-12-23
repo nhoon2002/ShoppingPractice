@@ -2,7 +2,7 @@
 export function firebaseDBReducer (
    state = {
      ref: "",
-     snapshot: [{'profilePic' : ""},{'profilePic' : ""}],
+     snapshot: [],
 
 
 	},

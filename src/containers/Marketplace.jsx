@@ -16,7 +16,7 @@ class Marketplace extends Component {
 	componentDidMount() {
 		fire.database().ref('items/').orderByKey().on('value', snapshot => {
 			console.log('items list returned from Marketplace.jsx');
-			this.props.marketplaceUpdate(snapshot);
+			this.props.marketplaceUpdate(snapshot); //Updates the props to reflect new items
 			console.log(this.props);
 
 			var itemsArray = Object.values(snapshot.val())

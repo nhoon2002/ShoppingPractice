@@ -30,7 +30,7 @@ export function checkSession() {
 			console.log('browserhistory:', browserHistory);
 			console.log('Auth status changed: logged in as: ' + firebaseUser.email);
 			console.log('Current user: %s', firebaseUser.uid);
-			fbUpdate();
+
 			}
 		else {
 			dispatch({ type: 'SESSION_NULL', payload: ""})

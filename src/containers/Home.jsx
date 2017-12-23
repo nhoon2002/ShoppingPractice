@@ -23,10 +23,12 @@ class Home extends Component {
 			  {/* <NavBootstrap /> */}
            Hello, Welcome to Home.
 			  <button onClick={this.props.signOut}>Sign Out</button>
+			  
 			  <br/>
 			  <Link to='/profile'>My Profile</Link>
 			  <Link to='/marketplace'>Marketplace</Link>
 			  <Link to='/mystore'>My Store</Link>
+
 		  </div>
 
 

@@ -13,14 +13,19 @@ class NavBootstrap extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">NHCH Shop</a>
+              <a onClick={() => this.props.router.push('/')}>
+               <div>
+                 <img className='img-circle navbarAvatar' src={this.props.currentUser.photoURL} alt='profile'/>
+               </div>
+              </a>
 
             </Navbar.Brand>
-            <Navbar.Brand pullRight>
+            <Navbar.Brand>
 
 
 
-                     <img className='img-circle navbarAvatar' src={this.props.firebaseDB[0].profilePic} alt='profile'/>
+
+
 
 
             </Navbar.Brand>

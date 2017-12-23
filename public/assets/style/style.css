@@ -2,7 +2,13 @@
    /* height: 100%; */
    padding: 5px 0 5px 0;
 
+    max-width: 50px;
+    max-height: 50px;
 }
+a.navbar-brand {
+   padding: 0 15px 15px 15px;
+}
+
 #navbarAvatarHolder {
    background-color: white;
 
