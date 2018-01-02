@@ -10,6 +10,7 @@ import { checkSessionReducer } from "./checkSessionReducer.jsx";
 import { loginReducer } from "./loginReducer.jsx";
 import { storageUploadReducer } from "./storageUploadReducer.jsx";
 import { marketplaceUpdateReducer } from "./marketplaceUpdateReducer.jsx";
+import { notificationReducer } from "./notificationReducer.jsx";
 
 
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
 	firebaseDBReducer,
 	storageUploadReducer,
 	marketplaceUpdateReducer,
+	notificationReducer,
 	routing: routerReducer
 });
 export default rootReducer;

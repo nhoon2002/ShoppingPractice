@@ -111,6 +111,22 @@ export function checkSession() {
  		}
 
   }
+
+ export function showNotification(content, type) {
+	 return function(dispatch) {
+		 dispatch({type: 'NOTIFYING', payload: {type: type, content: content}})
+
+	 }
+ }
+
+ export function hideNotification(content, type) {
+	 return function(dispatch) {
+		 dispatch({type: 'DISMISSING', payload: false})
+
+	 }
+ }
+
+
  export function firebaseUploadImg(file, metadata, user, fileName, uploadTask) {
 	 return function(dispatch) {
 
@@ -131,7 +147,7 @@ export function checkSession() {
 			        break;
 			    }
 			  }, function(error) {
-
+				  			showNotification(error.code, 'warning')
 							dispatch({type: 'STORAGE_UPLOAD_ERROR', payload: error.code});
 
 						  // A full list of error codes is available at
@@ -163,7 +179,9 @@ export function checkSession() {
 						  };
 						  var itemsRef = database.ref(`items/${Date.now()}`).set(itemInfo);
 						  database.ref(`users/${user.uid}/items`).push(itemInfo);
-							dispatch({type: 'STORAGE_UPLOAD_SUCCESS', payload: downloadURL})
+						  dispatch({type: 'NOTIFYING', payload: {type: 'success', content: 'Upload Successful!'}})
+						  dispatch({type: 'STORAGE_UPLOAD_SUCCESS', payload: downloadURL})
+
 
 
 

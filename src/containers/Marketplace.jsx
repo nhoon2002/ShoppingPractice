@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import fire from '../firebase.js';
+import {Grid, Row, Col, Button, Thumbnail} from 'react-bootstrap';
 
 
 class Marketplace extends Component {
@@ -20,10 +21,9 @@ class Marketplace extends Component {
 			console.log(this.props);
 
 			var itemsArray = Object.values(snapshot.val())
-			var newArray = [{name: 'Add an item.', photoURL: 'https://placehold.it/100x100'}, ...itemsArray];
-			console.log(newArray);
+
 			this.setState({
-				items: newArray
+				items: itemsArray
 			});
 			console.log('From INNER CDM...', this.state.items);
 
@@ -32,16 +32,27 @@ class Marketplace extends Component {
 
 
 	}
-	// componentWillReceiveProps(nextProps) {
-	// 	if(nextProps.databaseUpdate.length > 1) {
-	// 		console.log('the database update:',nextProps.databaseUpdate);
-	// 		this.setState({propsLoaded: true, items: nextProps.databaseUpdate});
-	// 	}
-   //
-	// }
+
 
 
 	render() {
+		const thumbnailInstance = (
+		  <Grid>
+		    <Row>
+		      <Col xs={6} md={4}>
+		        <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+		          <h3>Thumbnail label</h3>
+		          <p>Description</p>
+		          <p>
+		            <Button bsStyle="primary">Button</Button>&nbsp;
+		            <Button bsStyle="default">Button</Button>
+		          </p>
+		        </Thumbnail>
+		      </Col>
+
+		    </Row>
+		  </Grid>
+);
 
 
 
@@ -49,14 +60,32 @@ class Marketplace extends Component {
         <div>
            Hello, Welcome to Marketplace.
 
+			<Grid>
+
+				<Row>
+
+
+
 				  {this.state.items.map((item,i) =>
-					  <div className='singleItem' key={i}>
-						  <img className='itemImg' src={item.photoURL} alt='hi'/>
-						  <span>{item.name}</span>
-					  </div>
+					  <Col xs={6} md={4} lg={3} key={i}>
+						  <Thumbnail bsClass='thumbnail sample' src={item.photoURL} alt='thumbnailimg'>
+							  		<div className='thumbContent'>
+						          <span className='thumbCaption'><strong>{item.name}</strong></span>
+						          <p>Description.</p>
+						          <p>
+										 <Button bsStyle="primary">Details</Button>&nbsp;
+										 <Button bsStyle="default">&#x2764;</Button>
+									 </p>
+								 	</div>
+						  </Thumbnail>
+					  </Col>
+
+
 
 				  )}
+			  </Row>
 
+			</Grid>
 
 		  </div>
 

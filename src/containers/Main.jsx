@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NavBootstrap from '../components/NavBootstrap.jsx';
+import Notification from '../components/Notification.jsx';
+
 
 
 // function getNiceName(routes) {
@@ -14,8 +16,10 @@ class Main extends Component {
 
      const showNav = (
         <div>
+
            <NavBootstrap firebaseDB={this.props.firebaseDB} signOut = {this.props.signOut} currentUser = {this.props.currentUser} router={this.props.router}/>
            <div className='container'>
+             <Notification {...this.props}/>
             {React.cloneElement(this.props.children, this.props)}
            </div>
         </div>
@@ -26,6 +30,7 @@ class Main extends Component {
 
 
            <div className='container'>
+             <Notification {...this.props} />
             {React.cloneElement(this.props.children, this.props)}
            </div>
 
@@ -33,8 +38,11 @@ class Main extends Component {
 
      const renderType = this.props.loginStatus ? showNav : hideNav;
 
+
+
     return (
       <div className="Main">
+
          {renderType}
       </div>
 

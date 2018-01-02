@@ -58,5 +58,5 @@ app.use(express.static("./public"));
 app.use('/', routes);
 
 server.listen(PORT, function() {
-	  console.log("BookApp listening on PORT: " + PORT);
+	  console.log("ShoppingApp listening on PORT: " + PORT);
 })

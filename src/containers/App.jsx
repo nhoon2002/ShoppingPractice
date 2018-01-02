@@ -16,6 +16,9 @@ function mapStateToProps (state) {
 		currentUser: state.checkSessionReducer.currentUser,
 		firebaseDB: state.firebaseDBReducer.snapshot,
 		storageUpload: state.storageUploadReducer.fileURL,
+		notificationContent: state.notificationReducer.content,
+		notificationType: state.notificationReducer.type,
+		notificationShow: state.notificationReducer.show,
 		marketplaceItems: state.marketplaceUpdateReducer.itemsArray
 		// loginAccount: state.loginReducer.signinginAccount,
 		// queryData: state.tmdbReducer.dataReturned

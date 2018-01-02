@@ -4,7 +4,8 @@
 export function storageUploadReducer (
    state = {
      fileURL: '',
-     error: ""
+     error: false,
+     success: false
 
 	},
    action) {
@@ -15,14 +16,15 @@ export function storageUploadReducer (
       case "STORAGE_UPLOAD_ERROR": {
          return {
             ...state,
-            error: action.payload
+            error: true
          }
       }
       case "STORAGE_UPLOAD_SUCCESS": {
          return {
             ...state,
-            error: '',
-            fileURL: action.payload
+            error: false,
+            fileURL: action.payload,
+            success: true
          }
       }
 
