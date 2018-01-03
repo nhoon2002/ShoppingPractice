@@ -30,7 +30,7 @@ class Notification extends Component {
 
 			return (
 				<Alert bsStyle={this.props.notificationType} onDismiss={this.handleAlertDismiss}>
-	           <h4>Alert!</h4>
+	           <h4>Alert</h4>
 	           <p>{this.props.notificationContent}.</p>
 	           <p>
 

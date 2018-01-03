@@ -17,9 +17,46 @@ a.navbar-brand {
    height: 15vh;
    /* width: 150px; */
 }
-.thumbCaption {
-   font-weight: bold;
+.fileUploader {
+   border: 2px dashed red;
+   margin-bottom: 5px;
+}
+.wrapper {
+   text-align: center;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 1em;
+   /* grid-auto-rows: minmax(200px, auto); */
+
+
+}
+@media screen and (min-width: 600px) and (max-width: 850px) {
+   .wrapper {
+      grid-template-columns: 1fr 1fr 1fr;
+   }
+}
+
+@media screen and (min-width: 370px) and (max-width: 599px) {
+   .wrapper {
+      grid-template-columns: 1fr 1fr;
+   }
+}
+.thumbnails{
+   padding-top: 10px;
+   padding-bottom: 10px;
+   border: solid black 2px;
+
+}
+.thumbImage {
+
 }
 .thumbContent {
-   text-align: center;
+   /* clear: both; */
+
+}
+.center-cropped {
+   object-fit: cover;
+   object-position: center;
+   height: 200px;
+   width: 200px;
 }

@@ -16,6 +16,7 @@ function mapStateToProps (state) {
 		currentUser: state.checkSessionReducer.currentUser,
 		firebaseDB: state.firebaseDBReducer.snapshot,
 		storageUpload: state.storageUploadReducer.fileURL,
+		itemList: state.storageUploadReducer.itemList,
 		notificationContent: state.notificationReducer.content,
 		notificationType: state.notificationReducer.type,
 		notificationShow: state.notificationReducer.show,

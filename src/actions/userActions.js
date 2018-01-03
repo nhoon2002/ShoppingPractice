@@ -179,6 +179,8 @@ export function checkSession() {
 						  };
 						  var itemsRef = database.ref(`items/${Date.now()}`).set(itemInfo);
 						  database.ref(`users/${user.uid}/items`).push(itemInfo);
+
+
 						  dispatch({type: 'NOTIFYING', payload: {type: 'success', content: 'Upload Successful!'}})
 						  dispatch({type: 'STORAGE_UPLOAD_SUCCESS', payload: downloadURL})
 
@@ -189,7 +191,17 @@ export function checkSession() {
 						};
 				}
 
+export function itemListAdded(snap) {
+	return function(dispatch) {
 
+
+
+
+	   dispatch({type: 'CURRENTUSER_ITEMS_ADDED', payload: snap})
+
+	}
+
+}
 
 
 

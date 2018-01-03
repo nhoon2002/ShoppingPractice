@@ -5,7 +5,8 @@ export function storageUploadReducer (
    state = {
      fileURL: '',
      error: false,
-     success: false
+     success: false,
+     itemList: []
 
 	},
    action) {
@@ -25,6 +26,14 @@ export function storageUploadReducer (
             error: false,
             fileURL: action.payload,
             success: true
+         }
+      }
+      case "CURRENTUSER_ITEMS_ADDED": {
+         return {
+            ...state,
+            error: false,
+            success: true,
+            itemList: action.payload
          }
       }
 
