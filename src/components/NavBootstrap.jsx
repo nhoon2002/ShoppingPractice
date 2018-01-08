@@ -36,8 +36,8 @@ class NavBootstrap extends Component {
 
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} onClick={() => this.props.router.push('/marketplace')}>Marketplace</NavItem>
-              <NavItem eventKey={2} onClick={() => this.props.router.push('/mystore')}>My Store</NavItem>
+              <NavItem eventKey={1} onClick={() => this.props.router.push('/couponshop')}>CouponShop</NavItem>
+              <NavItem eventKey={2} onClick={() => this.props.router.push('/makecoupon')}>MakeCoupon</NavItem>
 
               <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>Action</MenuItem>

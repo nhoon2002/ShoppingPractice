@@ -6,7 +6,8 @@ export function storageUploadReducer (
      fileURL: '',
      error: false,
      success: false,
-     itemList: []
+     itemList: [],
+     couponsList: []
 
 	},
    action) {

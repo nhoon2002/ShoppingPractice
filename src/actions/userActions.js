@@ -14,6 +14,11 @@ export function marketplaceUpdate(snapshot) {
 	}
 
 }
+export function couponsUpdate(snapshot) {
+	return function(dispatch) {
+		dispatch({type: 'COUPONS_UPDATED', payload: snapshot.val()})
+	}
+}
 
 export function sampleAction() {
 	return function(dispatch) {
@@ -203,7 +208,27 @@ export function itemListAdded(snap) {
 
 }
 
+export function registerCoupon(inputs) {
+	return function(dispatch) {
 
+		var database = firebase.database();
+
+
+		var couponRef = database.ref('coupons').push(inputs);
+
+
+
+		dispatch({type: 'NOTIFYING', payload: {type: 'success', content: 'Coupon registered successfully!'}})
+
+
+
+		// dispatch({type: 'COUPON_UPLOAD_SUCCESS', payload: downloadURL})
+
+
+
+
+	}
+}
 
 
 

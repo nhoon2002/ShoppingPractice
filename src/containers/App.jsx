@@ -20,7 +20,8 @@ function mapStateToProps (state) {
 		notificationContent: state.notificationReducer.content,
 		notificationType: state.notificationReducer.type,
 		notificationShow: state.notificationReducer.show,
-		marketplaceItems: state.marketplaceUpdateReducer.itemsArray
+		marketplaceItems: state.marketplaceUpdateReducer.itemsArray,
+		couponsArray: state.couponsUploadReducer.couponsArray
 		// loginAccount: state.loginReducer.signinginAccount,
 		// queryData: state.tmdbReducer.dataReturned
 

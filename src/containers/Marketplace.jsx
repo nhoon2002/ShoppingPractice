@@ -42,7 +42,7 @@ class Marketplace extends Component {
 
         return (
         <div>
-           Hello, Welcome to Marketplace.
+           Hello, Welcome to Marketplace / Coupon Shop.
 
 			<Grid>
 

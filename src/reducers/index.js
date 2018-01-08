@@ -11,6 +11,7 @@ import { loginReducer } from "./loginReducer.jsx";
 import { storageUploadReducer } from "./storageUploadReducer.jsx";
 import { marketplaceUpdateReducer } from "./marketplaceUpdateReducer.jsx";
 import { notificationReducer } from "./notificationReducer.jsx";
+import { couponsUploadReducer } from "./couponsUploadReducer.jsx";
 
 
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
 	storageUploadReducer,
 	marketplaceUpdateReducer,
 	notificationReducer,
+	couponsUploadReducer,
 	routing: routerReducer
 });
 export default rootReducer;

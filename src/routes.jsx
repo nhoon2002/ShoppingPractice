@@ -10,6 +10,9 @@ import Signin from './containers/Signin.jsx';
 import Marketplace from './containers/Marketplace.jsx';
 import MyStore from './containers/MyStore.jsx';
 import Profile from './containers/Profile.jsx';
+import MakeCoupon from './containers/MakeCoupon.jsx';
+import CouponShop from './containers/CouponShop.jsx';
+
 
 import fire from './firebase.js';
 import { checkSession } from './actions/userActions';
@@ -46,6 +49,8 @@ const theRoutes = (
 				<Route path="/marketplace" component={Marketplace} />
 				<Route path="/mystore" component={MyStore} />
 				<Route path="/profile" component={Profile} />
+				<Route path="/makecoupon" component={MakeCoupon} />
+				<Route path="/couponshop" component={CouponShop} />
 
 
 		    </Route>
